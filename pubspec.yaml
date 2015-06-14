@@ -1,0 +1,11 @@
+name: jsproxy
+version: 0.0.1
+author: Kun Zhao <kunzhao77@gmail.com>
+description: JsProxy expose a JavaScript interface for a dart project so that a dart library can be easily used from JavaScript code.
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dev_dependencies:
+  test: any
+transformers:
+- test/pub_serve:
+    $include: test/test.dart
