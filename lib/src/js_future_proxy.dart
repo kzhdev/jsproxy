@@ -17,5 +17,6 @@ JsObject futureProxy(Future future, [Function customConversionFunc]) {
     });
   };
 
+  future_proxy['isFuture'] = true;
   return future_proxy;
 }
