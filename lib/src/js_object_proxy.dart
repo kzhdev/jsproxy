@@ -43,7 +43,7 @@ createJsProxy(Object obj, [Function customConversionFunc]) {
   if (_isPrimaryType(obj)) {
     return obj;
   } else if (obj is Future) {
-    return futureProxy(obj);
+    return futureProxy(obj, customConversionFunc);
   } else if (obj is Map) {
     var js_obj = new JsObject(jsObject, []);
 
