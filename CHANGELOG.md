@@ -1,3 +1,6 @@
+## 0.0.4
+* Fix stack overflow
+
 ## 0.0.3
 * pass customConversionFunc into futureProxy
 
