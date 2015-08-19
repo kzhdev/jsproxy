@@ -58,7 +58,7 @@ createJsProxy(Object obj, [Function customConversionFunc]) {
   } else if (customConversionFunc != null){
     return customConversionFunc(obj);
   }
-  return obj;
+  return JsProxy(obj);
 }
 
 bool _isPrimaryType(Object obj) {
