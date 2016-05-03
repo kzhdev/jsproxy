@@ -1,3 +1,6 @@
+## 0.0.6
+* Fix function conversion
+
 ## 0.0.5
 * In createJsProxy function, it the obj is not coverred by any case, return a JsProxy.
 

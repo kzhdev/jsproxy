@@ -13,7 +13,7 @@ import 'js_future_proxy.dart';
 final JsObject jsObject = context['Object'];
 
 JsObject JsProxy(Object obj) {
-  var jsproxy =  new JsObject(context['Object'], []);
+  var jsproxy =  new JsObject(jsObject, []);
   jsproxy['__isJsProxy'] = true;
   jsproxy['__dartObj'] = obj;
   return jsproxy;
@@ -21,6 +21,14 @@ JsObject JsProxy(Object obj) {
 
 void defineProperties(JsObject proxy, Map properties) {
   jsObject.callMethod('defineProperties', [proxy, new JsObject.jsify(properties)]);
+}
+
+/// Create a global JavaScript object
+/// The created js object can be found in windows[jsObjName]
+JsObject createGlobalJsObject(String jsObjName, Map properties) {
+  var jsObj = context[jsObjName] = new JsObject(jsObject, []);
+  defineProperties(jsObj, properties);
+  return jsObj;
 }
 
 void addGetter(JsObject proxy, String name, getter) {
@@ -75,6 +83,8 @@ bool _isPrimaryType(Object obj) {
     || obj is Node
     || obj is NodeList
     || (obj is TypedData && obj is! ByteBuffer)
-    || obj is Window;
+    || obj is Window
+    || obj is Function
+  ;
 }
 
